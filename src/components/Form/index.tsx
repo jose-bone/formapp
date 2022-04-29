@@ -14,31 +14,36 @@ export function Form() {
 
   return (
     <Container>
-      <Input
+      <ControlledInput
+        name="name"
+        control={control}
         icon="user"
         placeholder="Nome"
       />
-      <Input
+      <ControlledInput
+        name="email"
+        control={control}
         icon="mail"
         placeholder="E-mail"
         keyboardType="email-address"
-        autoCapitalize='none'
+        autoCapitalize="none"
       />
-      <Input
+      <ControlledInput
+        name="password"
+        control={control}
         icon="lock"
         placeholder="Senha"
         secureTextEntry
       />
-      <Input
+      <ControlledInput
+        name="password_confirm"
+        control={control}
         icon="lock"
         placeholder="Confirme a senha"
         secureTextEntry
       />
 
-      <Button
-        title="Cadastrar"
-        onPress={handleUserRegister}
-      />
+      <Button title="Cadastrar" onPress={handleSubmit(handleUserRegister)} />
     </Container>
-  )
+  );
 }
