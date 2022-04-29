@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Alert } from 'react-native';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Container } from './styles';
+import React from "react";
+import { Button } from "../Button";
+import { ControlledInput } from "../ControlledInput";
+import { Container } from "./styles";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type FormData = {
   name: string;
@@ -32,7 +34,7 @@ export function Form() {
     resolver: yupResolver(schema),
   });
 
-  }
+  function handleUserRegister(data: FormData) {}
 
   return (
     <Container>
