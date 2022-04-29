@@ -24,8 +24,13 @@ const schema = yup.object({
 });
 
 export function Form() {
-
-  function handleUserRegister() {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+  });
 
   }
 
@@ -36,6 +41,7 @@ export function Form() {
         control={control}
         icon="user"
         placeholder="Nome"
+        error={errors.name}
       />
       <ControlledInput
         name="email"
@@ -44,6 +50,7 @@ export function Form() {
         placeholder="E-mail"
         keyboardType="email-address"
         autoCapitalize="none"
+        error={errors.email}
       />
       <ControlledInput
         name="password"
@@ -51,6 +58,7 @@ export function Form() {
         icon="lock"
         placeholder="Senha"
         secureTextEntry
+        error={errors.password}
       />
       <ControlledInput
         name="password_confirm"
@@ -58,6 +66,7 @@ export function Form() {
         icon="lock"
         placeholder="Confirme a senha"
         secureTextEntry
+        error={errors.password_confirm}
       />
 
       <Button title="Cadastrar" onPress={handleSubmit(handleUserRegister)} />
